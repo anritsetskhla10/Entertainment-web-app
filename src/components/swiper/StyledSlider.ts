@@ -123,6 +123,7 @@ export const StyledSlider = styled.div`
 
         @media only screen and (min-width:1440px){
             padding: 0 ;
+            width: calc(100vw - 164px);
 
             .thumbnail-container{
                 max-width: 100%;

@@ -17,4 +17,8 @@ export type TData = {
     isBookmarked: boolean;
     isTrending: boolean;
   };
+
+  export type MediaListProps = {
+    data: TData[];
+}
   
