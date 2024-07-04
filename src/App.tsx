@@ -6,21 +6,48 @@ import Movies from "./pages/movies/Movies"
 import Series from "./pages/series/Series"
 import Bookmark from "./pages/bookmark/Bookmark"
 import Home from "./pages/home/Home"
+import { useState } from "react"
+import Login from "./pages/login/Login"
+import Singup from "./pages/sign up/Singup"
+import { MediaItem } from "./types"
 
 
 function App() {
+
+  const [dataInfo, setDataInfo] = useState<MediaItem[]>(data);
+  const [changeInput, setChangeInput] = useState(false)
 
   return (
     <StyledBox>
      <Nav></Nav>
     <Routes>
       <Route path="/" element = {<Navigate to={"/home"}/>} />
-      <Route path="/home" element = {<Home data={data}/>} />
-      <Route path="/movies" element = {<Movies data={data}/>} />
-      <Route path="/series" element = {<Series data={data}/>} />
-      <Route path="/bookmark" element = {<Bookmark data={data}/>} />
-      <Route path="/login" element = {<Bookmark data={data}/>} />
-      <Route path="/sign" element = {<Bookmark data={data}/>} />
+      <Route path="/home" element = {<Home 
+      data={dataInfo} 
+      setDataInfo={setDataInfo}
+      changeInput={changeInput}
+      setChangeInput={setChangeInput}
+      />} />
+      <Route path="/movies" element = {<Movies 
+      data={dataInfo} 
+      setDataInfo={setDataInfo}
+      changeInput={changeInput}
+      setChangeInput={setChangeInput}
+      />} />
+      <Route path="/series" element = {<Series 
+      data={dataInfo} 
+      setDataInfo={setDataInfo}
+      changeInput={changeInput}
+      setChangeInput={setChangeInput}
+      />} />
+      <Route path="/bookmark" element = {<Bookmark 
+      data={dataInfo} 
+      setDataInfo={setDataInfo}
+      changeInput={changeInput}
+      setChangeInput={setChangeInput}
+      />} />
+      <Route path="/login" element = {<Login />} />
+      <Route path="/sign" element = {< Singup/>} />
     </Routes>
     
     </StyledBox>
