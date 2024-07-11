@@ -5,6 +5,7 @@ import Card from "../../components/card/Card";
 import StyledContainer from "../../components/card/StyledContainer";
 
 
+
 function Home({data, setDataInfo, setChangeInput, changeInput}: MediaListProps) {
   
   return (
@@ -32,6 +33,7 @@ function Home({data, setDataInfo, setChangeInput, changeInput}: MediaListProps) 
     </div>
   )
 }
+
 
 
 

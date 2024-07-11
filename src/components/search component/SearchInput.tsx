@@ -57,4 +57,7 @@ const SearchInput = ({ setDataInfo ,setChangeInput, changeInput}: SearchProps) =
   );
 }
 
+// TODO: datalength  გასასწორებელია movies, series და bookmarked  გვერდებისთვის
+// TODO: ჩემით რო შევუცვალო ბუქმარქი dataში
+
 export default SearchInput;
