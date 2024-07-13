@@ -17,7 +17,16 @@ function App() {
   const [hideNav, setHideNav] = useState(true);
   const location = useLocation();
 
-
+   const toggleBookmark = (index: number) => {
+    setDataInfo(prevData => {
+      return prevData.map((item, i) => {
+        if (i === index) {
+          return { ...item, isBookmarked: !item.isBookmarked };
+        }
+        return item;
+      });
+    });
+  };
 
   useEffect(() => {
     if (location.pathname === '/login' || location.pathname === '/sign') {
@@ -26,6 +35,7 @@ function App() {
       setHideNav(false);
     }
   }, [location]);
+
 
   return (
     <StyledBox>
@@ -40,6 +50,7 @@ function App() {
               setDataInfo={setDataInfo}
               changeInput={changeInput}
               setChangeInput={setChangeInput}
+              toggleBookmark={toggleBookmark}
             />
           } 
         />
@@ -51,6 +62,7 @@ function App() {
               setDataInfo={setDataInfo}
               changeInput={changeInput}
               setChangeInput={setChangeInput}
+              toggleBookmark={toggleBookmark}
             />
           } 
         />
@@ -62,6 +74,7 @@ function App() {
               setDataInfo={setDataInfo}
               changeInput={changeInput}
               setChangeInput={setChangeInput}
+              toggleBookmark={toggleBookmark}
             />
           } 
         />
@@ -73,10 +86,11 @@ function App() {
               setDataInfo={setDataInfo}
               changeInput={changeInput}
               setChangeInput={setChangeInput}
+              toggleBookmark={toggleBookmark}
             />
           } 
         />
-         <Route 
+        <Route 
           path="/login" 
           element={
             <Login setHideNav={setHideNav} />

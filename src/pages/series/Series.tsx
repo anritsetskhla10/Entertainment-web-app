@@ -4,7 +4,7 @@ import SearchInput from "../../components/search component/SearchInput"
 import { MediaListProps } from "../../types"
 
 
-function Series({data, setDataInfo, setChangeInput, changeInput}:MediaListProps) {
+function Series({data, setDataInfo, setChangeInput, changeInput, toggleBookmark}:MediaListProps) {
   return (
     <div>
     <SearchInput setDataInfo={setDataInfo} setChangeInput={setChangeInput} changeInput={changeInput}></SearchInput>
@@ -15,10 +15,10 @@ function Series({data, setDataInfo, setChangeInput, changeInput}:MediaListProps)
     {data.map((item, index) => (
             changeInput ?   
             item.category != "Movie" &&
-            <Card key={index} item={item} />
+            <Card key={index} item={item} toggleBookmark={toggleBookmark} index={index}/>
               :
               item.category != "Movie" &&  (
-                  <Card key={index} item={item} />
+                <Card key={index} item={item} toggleBookmark={toggleBookmark} index={index}/>
               )
             ))}
     </StyledContainer>

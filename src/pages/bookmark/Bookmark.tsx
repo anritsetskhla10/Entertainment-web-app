@@ -5,7 +5,7 @@ import SearchInput from "../../components/search component/SearchInput"
 import { MediaListProps } from "../../types"
 
 
-function Bookmark({data, setDataInfo,setChangeInput, changeInput}:MediaListProps) {
+function Bookmark({data, setDataInfo,setChangeInput, changeInput, toggleBookmark}:MediaListProps) {
   return (
     <div>
       <SearchInput setDataInfo={setDataInfo} setChangeInput={setChangeInput} changeInput={changeInput}></SearchInput>
@@ -17,11 +17,11 @@ function Bookmark({data, setDataInfo,setChangeInput, changeInput}:MediaListProps
       {data.map((item, index) => (
             changeInput ? 
             ( item.isBookmarked &&  item.category == "Movie") && (
-              <Card key={index} item={item}></Card>
+              <Card key={index} item={item} toggleBookmark={toggleBookmark} index={index}/>
             )
               :
               ( item.isBookmarked &&  item.category == "Movie") && (
-                <Card key={index} item={item}></Card>
+                <Card key={index} item={item} toggleBookmark={toggleBookmark} index={index}/>
               )
             ))}
       </StyledContainer>
@@ -32,11 +32,11 @@ function Bookmark({data, setDataInfo,setChangeInput, changeInput}:MediaListProps
       {data.map((item, index) => (
             changeInput ? 
             ( item.isBookmarked &&  item.category != "Movie") && (
-              <Card key={index} item={item}></Card>
+              <Card key={index} item={item} toggleBookmark={toggleBookmark} index={index}/>
             )
               :
               ( item.isBookmarked &&  item.category != "Movie") && (
-                <Card key={index} item={item}></Card>
+                <Card key={index} item={item} toggleBookmark={toggleBookmark} index={index}/>
               )
             ))}
       </StyledContainer>

@@ -48,4 +48,5 @@ export type TData = {
     setDataInfo: React.Dispatch<React.SetStateAction<TData[]>>;
     changeInput:boolean;
     setChangeInput:React.Dispatch<React.SetStateAction<boolean>>;
+    toggleBookmark: (index: number) => void;
 };

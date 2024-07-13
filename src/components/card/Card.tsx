@@ -4,9 +4,11 @@ import { TData } from '../../types';
 
 interface CardProps {
   item: TData;
+  toggleBookmark: (index: number) => void;
+  index: number;
 }
 
-function Card({ item }: CardProps) {
+function Card({ item, toggleBookmark, index }: CardProps) {
   const [thumbnailSrc, setThumbnailSrc] = useState(item.thumbnail.regular.small);
 
   const updateThumbnailSrc = () => {
@@ -33,9 +35,14 @@ function Card({ item }: CardProps) {
           src={thumbnailSrc}
           alt={`${item.title} thumbnail`}
         />
-        <div className='bookmark-container'>
+        <div className='bookmark-container' onClick={() => toggleBookmark(index)}>
           <img className='bookmark' src={item.isBookmarked ? "./images/icon-bookmark-full.svg" : "./images/icon-bookmark-empty.svg"} alt="bookmark icon" />
         </div>
+
+        <div className='hover-container'>
+              <img src="/images/icon-play.svg" alt="play icon" />
+              <span>Play</span>
+          </div>
       </div>
       <div className='content'>
         <div className="info">
@@ -63,6 +70,41 @@ const StyledCard = styled.div`
     height: 110px;
     position: relative;
     margin-bottom: 8px;
+    cursor: pointer;
+
+    .hover-container{
+        display: none;
+    }
+
+    &:hover{
+      .hover-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 19px;
+        width: 117px;
+        height: 48px;
+        padding: 9px 24px 9px 9px;
+        border-radius: 28.5px;
+        background-color: rgba(255,255,255, 0.25);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+
+            & > img{
+                width: 30px;
+                height: 30px;
+            }
+
+            & > span{
+                font-size: 18px;
+                font-weight: 500;
+                color: #fff;
+            }
+        }
+    }
 
     .thumbnail {
       width: 100%;
@@ -85,6 +127,14 @@ const StyledCard = styled.div`
         width: 12px;
         height: 14px;
         cursor: pointer;
+      }
+
+      &:hover{
+        background-color: #fff;
+
+        .bookmark{
+          filter: brightness(0) saturate(100%) invert(4%) sepia(6%) saturate(5643%) hue-rotate(184deg) brightness(94%) contrast(92%);
+        }
       }
     }
   }

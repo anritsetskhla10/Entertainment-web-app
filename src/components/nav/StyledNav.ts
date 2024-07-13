@@ -23,12 +23,23 @@ export const StyledNav = styled.nav`
 
         & > li{
             cursor: pointer;
+            
+            & > img{
+                width: 16px;
+                height: 16px;
+    
+            }
+
+            &:hover{
+                filter: brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(2973%) hue-rotate(315deg) brightness(123%) contrast(110%);
+            }
+
+            a:focus{
+                filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(49deg) brightness(107%) contrast(101%);
+            }
+
         }
 
-        & > img{
-            width: 16px;
-            height: 16px;
-        }
     }
 
     .avatar{
