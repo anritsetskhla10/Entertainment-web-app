@@ -87,7 +87,7 @@ const Signup= () => {
                 onChange={handleChange}
                 error={errors.email}
               />
-            {errors.email && <span>{errors.email}</span>}
+           {errors.email && <span className="error">{errors.email}</span>}
             </div> 
             <div>
             <StyledInput
@@ -98,7 +98,7 @@ const Signup= () => {
               onChange={handleChange}
               error={errors.password}
             />
-            {errors.password && <span>{errors.password}</span>}
+            {errors.password && <span className="error">{errors.password}</span>}
             </div>
             <div>
             <StyledInput
@@ -109,7 +109,7 @@ const Signup= () => {
               onChange={handleChange}
               error={errors.repeatPassword}
             />
-            {errors.repeatPassword && <span >{errors.repeatPassword}</span>}
+            {errors.repeatPassword && <span className="error">{errors.repeatPassword}</span>}
             </div>
           </div>
           <button type="submit">Create an account</button>
