@@ -23,7 +23,7 @@ function Nav() {
           <Link to={'/bookmark'}><img src="/images/icon-nav-bookmark.svg" alt="bookmark icon" /></Link>
         </li> 
     </ul>
-    <Link to={'/login'}>
+    <Link to={'/login'} className="loginLink">
         <img src="/images/image-avatar.png" className="avatar" alt="avatar icon" />
     </Link>
     </StyledNav>

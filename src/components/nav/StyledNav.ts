@@ -41,13 +41,17 @@ export const StyledNav = styled.nav`
         }
 
     }
-
-    .avatar{
+    .loginLink{
         width: 24px;
         height: 24px;
-        border: solid 1px #fff;
-        border-radius: 50%;
-        cursor: pointer;
+
+        & > .avatar{
+            width: 24px;
+            height: 24px;
+            border: solid 1px #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     }
 
 
@@ -71,12 +75,15 @@ export const StyledNav = styled.nav`
             height: 20px;
         }
     }
-
-        .avatar{
+    .loginLink{
+        width: 32px;
+        height: 32px;
+        & >.avatar{
             width: 32px;
             height: 32px;
         }
     }
+}
 
     @media only screen and (min-width:1440px){
         width: 96px;
@@ -96,11 +103,14 @@ export const StyledNav = styled.nav`
             flex-direction: column;
             gap: 40px;
     }
-
-        .avatar{
+    .loginLink{
+        width: 40px;
+        height: 40px;
+        margin-top: 558px;
+        & >.avatar{
             width: 40px;
             height: 40px;
-            margin-top: 552px;
         }
+    }
     }
 `

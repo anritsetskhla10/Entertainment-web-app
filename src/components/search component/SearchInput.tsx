@@ -1,17 +1,18 @@
 import { ChangeEvent, useState, useEffect } from 'react';
-import {  TData } from "../../types";
-import OriginalData from '../../../data.json'
+import { TData } from "../../types";
+import OriginalData from '../../../data.json';
 
-interface SearchProps{
+interface SearchProps {
   setDataInfo: React.Dispatch<React.SetStateAction<TData[]>>;
   setChangeInput: React.Dispatch<React.SetStateAction<boolean>>;
   changeInput: boolean;
+  pageType: string;
 }
 
-const SearchInput = ({ setDataInfo ,setChangeInput, changeInput}: SearchProps) => {
+const SearchInput = ({ setDataInfo, setChangeInput, changeInput, pageType }: SearchProps) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [newOriginalData, setNewOriginalData] = useState(OriginalData);
-  const [dataLength, setDataLength] = useState<number|null>()
+  const [dataLength, setDataLength] = useState<number|null>(null);
 
   useEffect(() => {
     setNewOriginalData(newOriginalData);
@@ -21,16 +22,26 @@ const SearchInput = ({ setDataInfo ,setChangeInput, changeInput}: SearchProps) =
     setInputValue(event.target.value);
     setChangeInput(true);
 
+    let filteredData: TData[] = [];
 
     if (event.target.value === '') {
-      setDataInfo(OriginalData);
-      setChangeInput(false)
+      filteredData = OriginalData;
+      setChangeInput(false);
     } else {
-      const newData: TData[] = OriginalData.filter((item) =>
+      filteredData = OriginalData.filter((item) =>
         item.title.toLowerCase().includes(event.target.value.toLowerCase()));
-      setDataInfo(newData);
-      setDataLength(newData.length)
     }
+
+    if (pageType === 'bookmark') {
+      filteredData = filteredData.filter(item => item.isBookmarked);
+    } else if (pageType === 'movies') {
+      filteredData = filteredData.filter(item => item.category === 'Movie');
+    } else if (pageType === 'series') {
+      filteredData = filteredData.filter(item => item.category !== 'Movie');
+    }
+
+    setDataInfo(filteredData);
+    setDataLength(filteredData.length);
   };
 
   return (
@@ -48,16 +59,13 @@ const SearchInput = ({ setDataInfo ,setChangeInput, changeInput}: SearchProps) =
           onChange={handleInputChange}
         />
       </div>
-       {changeInput &&
-       <h2 className="text-xl font-light tracking-[-0.31px] text-[#fff] mt-[24px] mb-[24px] ml-[16px]
-        md:text-[32px] md:tracking-[-0.5px] md:mt-[34px] md:mb-[25px] md:ml-[25px]
-        xl:mt-[35px] xl:mb-[25px] xl:ml-[0]">Found {dataLength} results for ‘{inputValue}’</h2>
-       } 
+      {changeInput &&
+        <h2 className="text-xl font-light tracking-[-0.31px] text-[#fff] mt-[24px] mb-[24px] ml-[16px]
+          md:text-[32px] md:tracking-[-0.5px] md:mt-[34px] md:mb-[25px] md:ml-[25px]
+          xl:mt-[35px] xl:mb-[25px] xl:ml-[0]">Found {dataLength} results for ‘{inputValue}’</h2>
+      } 
     </div>
   );
 }
-
-// TODO: datalength  გასასწორებელია movies, series და bookmarked  გვერდებისთვის
-// TODO: ჩემით რო შევუცვალო ბუქმარქი dataში
 
 export default SearchInput;

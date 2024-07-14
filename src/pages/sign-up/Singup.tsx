@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { StyledLogin } from "../login/Login";
+import { StyledInput, StyledLogin } from "../../components/login-sign-form/StyledLogin";
 
 
 const Signup= () => {
@@ -79,32 +79,35 @@ const Signup= () => {
           <h3>Sign Up</h3>
           <div className="input-container">
            <div>
-            <input
-              type="text"
-              placeholder="Email address"
-              id="email"
-              value={user.email}
-              onChange={handleChange}
-            />
+           <StyledInput
+                type="text"
+                placeholder="Email address"
+                id="email"
+                value={user.email}
+                onChange={handleChange}
+                error={errors.email}
+              />
             {errors.email && <span>{errors.email}</span>}
             </div> 
             <div>
-            <input
+            <StyledInput
               type="password"
               placeholder="Password"
               id="password"
               value={user.password}
               onChange={handleChange}
+              error={errors.password}
             />
             {errors.password && <span>{errors.password}</span>}
             </div>
             <div>
-            <input
+            <StyledInput
               type="password"
               placeholder="Repeat Password"
               id="repeatPassword"
               value={user.repeatPassword}
               onChange={handleChange}
+              error={errors.repeatPassword}
             />
             {errors.repeatPassword && <span >{errors.repeatPassword}</span>}
             </div>

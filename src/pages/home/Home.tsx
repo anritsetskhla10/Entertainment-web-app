@@ -10,7 +10,7 @@ function Home({data, setDataInfo, setChangeInput, changeInput,toggleBookmark}: M
   
   return (
     <div>
-      <SearchInput setDataInfo={setDataInfo} setChangeInput={setChangeInput} changeInput={changeInput}></SearchInput>
+      <SearchInput setDataInfo={setDataInfo} setChangeInput={setChangeInput} changeInput={changeInput} pageType="home"></SearchInput>
       {changeInput ? '' :  
       <h2 className="text-xl font-light tracking-[-0.31px] text-[#fff] mt-[26px] mb-[16px] ml-[16px]
       md:text-[32px] md:tracking-[-0.5px] md:mt-[34px] md:mb-[25px] md:ml-[25px]
