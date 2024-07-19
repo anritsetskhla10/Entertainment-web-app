@@ -10,7 +10,7 @@ function Series({data, setDataInfo, setChangeInput, changeInput, toggleBookmark}
     <SearchInput setDataInfo={setDataInfo} setChangeInput={setChangeInput} changeInput={changeInput} pageType="series"></SearchInput>
     {changeInput ? '' : <h2 className="text-xl font-light tracking-[-0.31px] text-[#fff] mt-[26px] mb-[16px] ml-[16px]
     md:text-[32px] md:tracking-[-0.5px] md:mt-[34px] md:mb-[25px] md:ml-[25px]
-    xl:mt-[35px] xl:mb-[25px] xl:ml-[0]">Bookmarked Movies</h2>}
+    xl:mt-[35px] xl:mb-[25px] xl:ml-[0]">Series</h2>}
     <StyledContainer>
     {data.map((item, index) => (
             changeInput ?   
